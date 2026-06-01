@@ -1,220 +1,307 @@
 # 🚀 Next-Gen Learning Student Dashboard
 
 <p align="center">
-  <img src="https://img.shields.io/badge/React-19.x-blue?style=for-the-badge&logo=react" alt="React 19" />
-  <img src="https://img.shields.io/badge/Vite-6.x-purple?style=for-the-badge&logo=vite" alt="Vite" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?style=for-the-badge&logo=tailwind-css" alt="Tailwind v4" />
-  <img src="https://img.shields.io/badge/Supabase-Database-3ecf8e?style=for-the-badge&logo=supabase" alt="Supabase Backend" />
-  <img src="https://img.shields.io/badge/Framer_Motion-12.x-ff007f?style=for-the-badge&logo=framer" alt="Framer Motion" />
+  <img src="https://img.shields.io/badge/Next.js-15.x-black?logo=next.js" alt="Next.js" />
+  <img src="https://img.shields.io/badge/Supabase-Database-3ecf8e?logo=supabase" alt="Supabase" />
+  <img src="https://img.shields.io/badge/Framer_Motion-12.x-ff007f?logo=framer" alt="Framer Motion" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?logo=tailwind-css" alt="Tailwind CSS" />
 </p>
 
-## 🌐 Live Product Demo
-👉 **Experience the live build at:** [https://next-gen-learning-student-dashboard-seven.vercel.app](https://next-gen-learning-student-dashboard-seven.vercel.app)
+## 🌐 Live Demo
+[https://next-gen-learning-student-dashboard-seven.vercel.app](https://next-gen-learning-student-dashboard-seven.vercel.app)
 
 ---
 
-An ultra-modern, high-fidelity **Student Dashboard** designed for next-generation educational interfaces. Built on a modular **Bento Grid** layout, this workspace integrates live PostgreSQL data synchronization with Supabase, dynamic profile and bio personalization, a premium Dicebear Avatar Studio, customizable mindset goals, and zero-layout-shift physics-based animations.
+## 📖 About
 
----
+A modern student dashboard with Bento Grid layout, live Supabase data fetching, and smooth Framer Motion animations.
 
-## 🎨 Design Philosophy & Architecture
+**Features:**
+- Dark mode Bento Grid dashboard
+- Collapsible sidebar with layoutId animations
+- Live course data from Supabase
+- Animated progress bars
+- Activity heatmap
+- Achievements & Settings tabs
+- Fully responsive
 
-The visual space is forged on a pure, immersive **Cosmic Dark** theme tailored to assist late-night learning sessions and improve student focus:
+# 🚀 Getting Started
 
-*   **Premium Color Scale:** Set against an eye-safe off-black background (`bg-zinc-950`), framed by ultra-crisp borders (`border-zinc-805/60`), and accented with soft, glowing indigo gradients (`from-indigo-600/20 to-transparent`).
-*   **Modular Bento Grid Layout:** High-density arrangement compartmentalizes core interfaces into reactive tiles. Information flows naturally across custom cards depending on screen dimensions.
-*   **Asymmetric Sidebar Rail:** Navigation is mounted on an interactive sidebar that collapses gracefully into a slim tactile utility bar on tablet displays, and transforms into an elegant bottom menu row on mobile devices.
+Follow these steps to set up the project locally.
 
----
+## Step 1: Clone the Repository
 
-## ⚡ Rubric Compliance Sheet & Design Decisions
-
-### 1. Data Architecture & Supabase Synchronization (30%)
-*   **Clean Database Handshake:** Built on `@supabase/supabase-js`, all real-time events, profile updates,XP logging, and settings are synced directly to PostgreSQL tables.
-*   **Hydrated Offline Sandbox Mode:** If Supabase credentials are not found or network latencies occur, the dashboard triggers a high-fidelity **Local Sandbox Engine**. This instantly pre-hydrates beautiful dummy data so that the dashboard remains completely responsive with zero empty cards or broken states.
-*   **Effective Skeletons & Transitions:** Loading handshakes render custom pulsing zinc skeletons to optimize cumulative layout shifts (CLS).
-
-### 2. Framer Motion Performance Engineering (30%)
-*   **Physical Spring Signatures:** We bypassed linear easing, mapping interactions to realistic spring models:
-    ```javascript
-    type: "spring",
-    stiffness: 300,
-    damping: 20
-    ```
-*   **Anatomical Scale Transformations:** Hover states utilize pure GPU-tracked visual scale multipliers (`1.015` to `1.02`), keeping physical layout reflow counts at absolute zero.
-*   **Magnetic Link Snapping:** Custom sidebar highlights utilize a shared `layoutId` so active state panels "slide" down the rails fluidly on a single layer interpolation.
-
-### 3. Code Aesthetics & Type-Safety (20%)
-*   **Logical Component Isolation:** Code is clean and modular. App files avoid bulky code blobs by exporting specialized visual components into `/components` directory.
-*   **Strict Type Manifest (`/types`):** Every data payload is explicitly typed to prevent runtime null pointers:
-    ```typescript
-    export interface UserProfile {
-      name: string;
-      email: string;
-      streak_days: number;
-      total_xp: number;
-      student_pass_id: string;
-      bio?: string;
-      institution?: string;
-      avatar_url?: string;
-    }
-    ```
-
-### 4. Advanced Dicebear Customizer & Responsiveness (20%)
-*   **Dicebear Avatar Engine:** Features an premium preset gallery covering `avataaars`, `lorelei`, `bottts`, `pixel-art`, `open-peeps`, `adventurer`, and `personas` styles.
-*   **Responsive Adaptation:** The grid degrades seamlessly:
-    *   **Desktop (>1024px):** Luxurious multi-column grid with a floating left sidebar guide.
-    *   **Tablet (768px - 1024px):** Compact grid with a collapsed side icon-dock.
-    *   **Mobile (<768px):** Clean single-column stack with an interactive bottom-dock toolbar.
-
----
-
-## 🛠️ Step-by-Step Vercel Deployment Instructions
-
-Follow these exact configurations to deploy your client-side React + Vite SPA on Vercel instantly without errors:
-
-### 1. Set Up New Project
-1. Log in to your Vercel Dashboard and click **Add New** > **Project**.
-2. Select your imported GitHub Repository: **`namita1005s/Next-Gen-Learning-Student-Dashboard`** and click **Import**.
-
-### 2. Configure Project Framework Presets
-Under **Configure Project**, make sure the settings match the parameters below:
-
-| Field | Configuration Value |
-| :--- | :--- |
-| **Framework Preset** | **Vite** *(Do NOT select Next.js, this is a premium client SPA!)* |
-| **Root Directory** | `./` |
-| **Build Command** | `npm run build` |
-| **Output Directory** | `dist` |
-| **Install Command** | `npm install` |
-
-### 3. Configure Environment Variables
-Expand the **Environment Variables** accordion and add these two specific secrets:
-
-1.  **`NEXT_PUBLIC_SUPABASE_URL`** ➡️ `https://your-project-id.supabase.co`
-2.  **`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`** ➡️ `your-supabase-anon-key`
-
-Click **Deploy**! Vercel will bundle your static assets and host them globally on their ultra-fast Edge Network.
-
----
-
-## ⚠️ Troubleshooting Built Warnings & Deployment Errors
-
-### 🔴 The `node-domexception` Warning
-You might see this line in your build output:
-```text
-npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
-```
-*   **Cause:** This is a downstream warning from third-party client dependencies. **It is harmless and will not fail your build.**
-*   **Fix:** Ignore it safe in the knowledge that Vercel ignores standard installation warnings.
-
-### 🔴 Why did the build fail earlier?
-*   **The Issue:** The project previously contained a leftover SSR server entry (`lib/supabase/server.ts`) which imported `next/headers`. Since this is a lightweight Vite client SPA (not a Next.js App Router project), the TypeScript compilation stage (`tsc --noEmit`) threw error `TS2307: Cannot find module 'next/headers'`.
-*   **The Resolution:** We successfully deleted the unused Next.js-bound server file and verified that the production linter executes in a perfectly clean, green status (`exit code 0`). Your main branch is now optimized and fully ready for Vercel deployment!
-
----
-
-## 🗄️ Database Schema & Supabase Setup
-
-To spin up the PostgreSQL backbone, execute the following statements in your **Supabase SQL Editor**:
-
-```sql
--- 1. Create User Profiles
-CREATE TABLE users (
-  id uuid DEFAULT gen_random_uuid(),
-  name text,
-  email text PRIMARY KEY,
-  gender text,
-  date_of_birth date,
-  phone text,
-  address text,
-  admission_date date,
-  class_name text,
-  institution text,
-  student_pass_id text,
-  bio text,
-  streak_days integer DEFAULT 0,
-  total_xp integer DEFAULT 0,
-  avatar_url text
-);
-
--- 2. Create Enrolled Courses
-CREATE TABLE courses (
-  id text PRIMARY KEY,
-  title text NOT NULL,
-  progress integer DEFAULT 0,
-  icon_name text,
-  created_at timestamptz DEFAULT now()
-);
-
--- 3. Create Achievements
-CREATE TABLE achievements (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  title text NOT NULL,
-  description text NOT NULL,
-  icon_name text NOT NULL,
-  level text NOT NULL,
-  xp_earned integer DEFAULT 0,
-  color_from text DEFAULT 'from-amber-500/20',
-  color_to text DEFAULT 'to-orange-500/10',
-  text_color text DEFAULT 'text-amber-400',
-  border_color text DEFAULT 'border-amber-500/30',
-  user_email text REFERENCES users(email),
-  created_at timestamp DEFAULT now()
-);
-
--- 4. Create Focus Activity Logs
-CREATE TABLE activity_log (
-  id text PRIMARY KEY,
-  activity_date date NOT NULL,
-  submissions_count integer DEFAULT 0,
-  lessons_done integer DEFAULT 0,
-  user_email text,
-  created_at timestamptz DEFAULT now()
-);
-
--- 5. Create Custom Student Settings
-CREATE TABLE user_settings (
-  id text PRIMARY KEY,
-  user_email text UNIQUE,
-  animation_speed text DEFAULT 'normal',
-  show_streak boolean DEFAULT true,
-  show_xp boolean DEFAULT true,
-  streak_reminders boolean DEFAULT true,
-  sound_effects boolean DEFAULT false,
-  updated_at timestamptz DEFAULT now()
-);
-
--- Disable Row Level Security during onboarding for direct client access
-ALTER TABLE users DISABLE ROW LEVEL SECURITY;
-ALTER TABLE courses DISABLE ROW LEVEL SECURITY;
-ALTER TABLE achievements DISABLE ROW LEVEL SECURITY;
-ALTER TABLE activity_log DISABLE ROW LEVEL SECURITY;
-ALTER TABLE user_settings DISABLE ROW LEVEL SECURITY;
-```
-
-> ⚡ **Smart Seeder Active:** If your database details are valid, but your tables are empty, the dashboard will automatically trigger its customized, high-fidelity internal Seeder engine to prefill standard educational metrics, modules, and achievements!
-
----
-
-## 🏁 Quick Launch Guide for Local Machine
-
-Follow these standard commands in your local directory for direct sandbox execution:
-
-### 1. Install Project Packages
 ```bash
+git clone https://github.com/your-username/next-gen-learning-student-dashboard.git
+cd next-gen-learning-student-dashboard
 npm install
 ```
 
-### 2. Launch Local Server
+## Step 2: Create Environment Variables
+
+Create a `.env.local` file in the root directory and add the following:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+You can find these values in:
+
+**Supabase Dashboard → Project Settings → API**
+
+## Step 3: Run the Development Server
+
 ```bash
 npm run dev
 ```
-The client applet will run locally on accessible port `3000`.
 
-### 3. Compile Production Dist
+Open your browser and visit:
+
+```text
+http://localhost:3000
+```
+
+The dashboard will automatically reload whenever you make changes.
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── app/
+├── components/
+├── lib/
+├── hooks/
+├── types/
+└── utils/
+```
+
+---
+
+## ✨ Key Features
+
+* Modern Bento Grid Dashboard UI
+* Smooth Framer Motion Animations
+* Supabase Database Integration
+* Dark Theme Interface
+* Responsive Design
+* Progress Tracking System
+* Achievement Management
+* Activity Heatmap Visualization
+* User Settings Panel
+
+---
+
+## 🚀 Deployment
+
+The easiest way to deploy this project is using Vercel.
+
 ```bash
 npm run build
 ```
-Generates clean, fully tree-shaken assets inside `/dist` directory.
+
+Then deploy your repository to Vercel and add the same environment variables used in `.env.local`.
+
+---
+
+## 👩‍💻 Author
+
+**Namita Singh**
+
+* GitHub: @namita1005s
+* MCA Student | Full Stack & Data Science Enthusiast
+
+---
+
+## 📜 License
+
+This project is created for learning and portfolio purposes.
+
+---
+
+<p align="center">
+  Built with ❤️ using Next.js, Supabase & Framer Motion
+</p>
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Next.js 15 (App Router) | Framework |
+| TypeScript | Type safety |
+| Tailwind CSS | Styling |
+| Framer Motion | Animations |
+| Supabase | Database |
+| Lucide React | Icons |
+
+---
+
+## 🗄️ Database Setup
+
+Run in Supabase SQL Editor:
+
+```sql
+-- Users table
+CREATE TABLE users (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  streak_days INTEGER DEFAULT 0,
+  total_xp INTEGER DEFAULT 0,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+INSERT INTO users (name, email, streak_days, total_xp) VALUES
+  ('Namita Singh', 'namita@singh.com', 7, 1240);
+
+-- Courses table
+CREATE TABLE courses (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  progress INTEGER DEFAULT 0 CHECK (progress >= 0 AND progress <= 100),
+  icon_name TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+INSERT INTO courses (title, progress, icon_name) VALUES
+  ('Data Science', 45, 'BarChart3'),
+  ('Backend Development (JAVA)', 30, 'Server'),
+  ('Full Stack Development', 25, 'Code2'),
+  ('Advanced React Patterns', 75, 'Globe');
+
+-- Achievements table
+CREATE TABLE achievements (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  icon_name TEXT NOT NULL,
+  level TEXT NOT NULL,
+  xp_earned INTEGER DEFAULT 0,
+  user_email TEXT REFERENCES users(email),
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Activity log table
+CREATE TABLE activity_log (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  activity_date DATE NOT NULL,
+  submissions_count INTEGER DEFAULT 0,
+  lessons_done INTEGER DEFAULT 0,
+  user_email TEXT REFERENCES users(email),
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- User settings table
+CREATE TABLE user_settings (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_email TEXT UNIQUE REFERENCES users(email),
+  animation_speed TEXT DEFAULT 'normal',
+  show_streak BOOLEAN DEFAULT true,
+  show_xp BOOLEAN DEFAULT true,
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+
+# 🚀 Getting Started
+
+Follow these steps to set up the project locally.
+
+## Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/your-username/next-gen-learning-student-dashboard.git
+cd next-gen-learning-student-dashboard
+npm install
+```
+
+## Step 2: Create Environment Variables
+
+Create a `.env.local` file in the root directory and add the following:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+You can find these values in:
+
+**Supabase Dashboard → Project Settings → API**
+
+## Step 3: Run the Development Server
+
+```bash
+npm run dev
+```
+
+Open your browser and visit:
+
+```text
+http://localhost:3000
+```
+
+The dashboard will automatically reload whenever you make changes.
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── app/
+├── components/
+├── lib/
+├── hooks/
+├── types/
+└── utils/
+```
+
+---
+
+## ✨ Key Features
+
+* Modern Bento Grid Dashboard UI
+* Smooth Framer Motion Animations
+* Supabase Database Integration
+* Dark Theme Interface
+* Responsive Design
+* Progress Tracking System
+* Achievement Management
+* Activity Heatmap Visualization
+* User Settings Panel
+
+---
+
+## 🚀 Deployment
+
+The easiest way to deploy this project is using Vercel.
+
+```bash
+npm run build
+```
+
+Then deploy your repository to Vercel and add the same environment variables used in `.env.local`.
+
+---
+
+## 👩‍💻 Author
+
+**Namita Singh**
+
+
+* MCA Student | Full Stack Enthusiast
+
+---
+
+## 📜 License
+
+This project is created for Internship purposes.
+
+---
+
+<p align="center">
+  Built with ❤️ using Next.js, Supabase & Framer Motion
+</p>
 
